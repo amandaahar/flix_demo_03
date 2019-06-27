@@ -9,6 +9,10 @@
 #import "MoviesViewController.h"
 #import "MovieCell.h"
 
+// the AFNetworking library adds a few helper function to the UIImage view
+
+#import "UIImageView+AFNetworking.h"
+
 // <UITableViewDataSource, UITableViewDelegate> says that this class implements
 // data source and delegate meaning this class is a data source now
 // this means that MoviesViewController will implement the methods associated
@@ -22,6 +26,7 @@
 // strong means to increment the reference count of movies so it does't go away
 
 @property (nonatomic, strong) NSArray *movies;
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
 
 @end
 
@@ -33,8 +38,14 @@
     // set data source and delegate equal to this view controller
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
-    // Do any additional setup after loading the view.
     
+    [self fetchMovies];
+    
+    
+    
+}
+
+- (void)fetchMovies {
     //network call
     NSURL *url = [NSURL URLWithString:@"https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed"];
     NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
@@ -94,6 +105,14 @@
     cell.titleLabel.text = movie[@"title"];
     cell.synopsisLabel.text = movie[@"overview"];
     
+    NSString *baseURLString = @"https://image.tmdb.org/t/p/w500";
+    NSString *posterURLString = movie[@"poster_path"];
+    NSString *fullPosterURLString = [baseURLString stringByAppendingString:posterURLString];
+    
+    // NSURL is basically a string except it checks to see if a URL is valid or not
+    NSURL *posterURL = [NSURL URLWithString:fullPosterURLString];
+    cell.posterView.image = nil;
+    [cell.posterView setImageWithURL:posterURL];
     return cell;
 }
 
