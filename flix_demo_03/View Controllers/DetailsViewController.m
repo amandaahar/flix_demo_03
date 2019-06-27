@@ -43,6 +43,10 @@
     
     self.titleLabel.text = self.movie[@"title"];
     self.synopsisLabel.text = self.movie[@"overview"];
+    
+    //adjusts label to fit the contents of the stuff in it
+    [self.titleLabel sizeToFit];
+    [self.synopsisLabel sizeToFit];
 }
 
 /*
