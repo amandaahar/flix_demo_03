@@ -3,13 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		23011B344C85E446DDB8E5CE /* Pods_flix_demo_03Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42FAEAE9C557ED1DD7A0DC7B /* Pods_flix_demo_03Tests.framework */; };
 		32EB15DCCD35883B55DB3120 /* Pods_flix_demo_03UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66C8D81FCECDFFA2ECF3856A /* Pods_flix_demo_03UITests.framework */; };
 		B06F588981EB3E4FAE0683F6 /* Pods_flix_demo_03.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75015BC7929077AC16501722 /* Pods_flix_demo_03.framework */; };
+		E74E818F22C574850051589B /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E74E818E22C574850051589B /* DetailsViewController.m */; };
 		E7B6DFE822C3EF7C0041E863 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B6DFE722C3EF7C0041E863 /* AppDelegate.m */; };
 		E7B6DFEE22C3EF7C0041E863 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7B6DFEC22C3EF7C0041E863 /* Main.storyboard */; };
 		E7B6DFF022C3EF7D0041E863 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7B6DFEF22C3EF7D0041E863 /* Assets.xcassets */; };
@@ -46,6 +47,8 @@
 		8F9FD3F2F7FD433CAE5BFC8D /* Pods-flix_demo_03Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-flix_demo_03Tests.release.xcconfig"; path = "Target Support Files/Pods-flix_demo_03Tests/Pods-flix_demo_03Tests.release.xcconfig"; sourceTree = "<group>"; };
 		9EAC63F40560FDF2F541B3FA /* Pods-flix_demo_03UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-flix_demo_03UITests.release.xcconfig"; path = "Target Support Files/Pods-flix_demo_03UITests/Pods-flix_demo_03UITests.release.xcconfig"; sourceTree = "<group>"; };
 		B9CBA0166FA7D99569798ECF /* Pods-flix_demo_03UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-flix_demo_03UITests.debug.xcconfig"; path = "Target Support Files/Pods-flix_demo_03UITests/Pods-flix_demo_03UITests.debug.xcconfig"; sourceTree = "<group>"; };
+		E74E818D22C574850051589B /* DetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailsViewController.h; sourceTree = "<group>"; };
+		E74E818E22C574850051589B /* DetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailsViewController.m; sourceTree = "<group>"; };
 		E7B6DFE322C3EF7C0041E863 /* flix_demo_03.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = flix_demo_03.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7B6DFE622C3EF7C0041E863 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E7B6DFE722C3EF7C0041E863 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -106,7 +109,6 @@
 				B9CBA0166FA7D99569798ECF /* Pods-flix_demo_03UITests.debug.xcconfig */,
 				9EAC63F40560FDF2F541B3FA /* Pods-flix_demo_03UITests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -182,6 +184,8 @@
 			children = (
 				E7B6E01822C405EF0041E863 /* MoviesViewController.h */,
 				E7B6E01922C405EF0041E863 /* MoviesViewController.m */,
+				E74E818D22C574850051589B /* DetailsViewController.h */,
+				E74E818E22C574850051589B /* DetailsViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -423,6 +427,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E7B6DFF622C3EF7D0041E863 /* main.m in Sources */,
+				E74E818F22C574850051589B /* DetailsViewController.m in Sources */,
 				E7B6DFE822C3EF7C0041E863 /* AppDelegate.m in Sources */,
 				E7B6E02022C4409E0041E863 /* MovieCell.m in Sources */,
 				E7B6E01A22C405EF0041E863 /* MoviesViewController.m in Sources */,

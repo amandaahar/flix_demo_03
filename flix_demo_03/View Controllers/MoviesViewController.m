@@ -12,6 +12,7 @@
 // the AFNetworking library adds a few helper function to the UIImage view
 
 #import "UIImageView+AFNetworking.h"
+#import "DetailsViewController.h"
 
 // <UITableViewDataSource, UITableViewDelegate> says that this class implements
 // data source and delegate meaning this class is a data source now
@@ -41,6 +42,12 @@
     
     [self fetchMovies];
     
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    
+    // this calls the fetchMovies fn on self when refresh control is triggers which corresponds to UIControlEventValueChanged
+    [self.refreshControl addTarget:self action:@selector(fetchMovies) forControlEvents:UIControlEventValueChanged];
+    [self.tableView insertSubview:self.refreshControl atIndex:0];
+    
     
     
 }
@@ -63,7 +70,7 @@
             // self. is similar to saying this. in java
             self.movies = dataDictionary[@"results"];
             for (NSDictionary *movie in self.movies) {
-                NSLog(@"%@", movie[@"title"]);
+                // NSLog(@"%@", movie[@"title"]);
             }
             
             // this calls data source methods again since it takes awhile for the movies to
@@ -74,6 +81,7 @@
             // TODO: Store the movies in a property to use elsewhere
             // TODO: Reload your table view data
         }
+        [self.refreshControl endRefreshing];
     }];
     [task resume];
 }
@@ -116,14 +124,27 @@
     return cell;
 }
 
-/*
+
 #pragma mark - Navigation
 
+
 // In a storyboard-based application, you will often want to do a little preparation before navigation
+// this method is basically asking if you want the next view controller to know a property about the current view controller
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    
+    UITableViewCell *tappedCell = sender;
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:tappedCell];
+    // gets index for movie you clicked on?
+    NSDictionary *movie = self.movies[indexPath.row];
+    
+    DetailsViewController *detailsViewController = [segue destinationViewController];
+    detailsViewController.movie = movie;
+    
+    // NSLog(@"Tapping on a movie");
 }
-*/
+ 
+
 
 @end
