@@ -21,6 +21,7 @@
 @interface MoviesViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 
 // property of type NSArray called movies; getters and setters are automatocally
 // created with the property declaration as well as an encapsulated version of *movies
@@ -40,7 +41,12 @@
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     
+    // We put this line here so that the indicator appears while the movies are being fetched on the next line
+    [self.activityIndicator startAnimating];
+    
     [self fetchMovies];
+    
+    // [self.activityIndicator stopAnimating];
     
     self.refreshControl = [[UIRefreshControl alloc] init];
     
@@ -80,6 +86,9 @@
             // TODO: Get the array of movies
             // TODO: Store the movies in a property to use elsewhere
             // TODO: Reload your table view data
+            
+            // makes indicator stop spinning and go away
+            [self.activityIndicator stopAnimating];
         }
         [self.refreshControl endRefreshing];
     }];
